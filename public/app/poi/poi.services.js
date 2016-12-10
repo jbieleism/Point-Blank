@@ -27,6 +27,7 @@
         data: {'name': 'poiInfo'}
       })
       .then(function (results) {
+        console.log(results.data)
         return results.data;
       });
     };

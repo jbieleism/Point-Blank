@@ -21,8 +21,8 @@
       poiService.grabSinglePoiData(url)
         .then(function (results) {
           vm.poi = results;
-          vm.reviews = results;
-          console.log(vm.reviews)
+          vm.reviews = results.reviews;
+          console.log(results.reviews)
           vm.genRating = vm.calcGeneralRating(vm.reviews);
         });
     };
@@ -42,6 +42,10 @@
     };
 
     vm.calcGeneralRating = function (reviews) {
+
+      //capture the general rating. Number is found in vm.reviews.general_rating
+      console.log(reviews.general_rating)
+
       var result = reviews.reduce(function (acc, review) {
         return acc + review.rating;
       }, 0);
