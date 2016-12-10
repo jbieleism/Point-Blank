@@ -22,11 +22,12 @@
         .then(function (results) {
           vm.poi = results;
           vm.reviews = results.reviews;
+          console.log(results.reviews)
           vm.genRating = vm.calcGeneralRating(vm.reviews);
         });
     };
     vm.init();
-
+    console.log(vm)
     vm.addReview = function () {
       let poireview = {};
       poireview.reviewType = 'general';
@@ -41,6 +42,10 @@
     };
 
     vm.calcGeneralRating = function (reviews) {
+
+      //capture the general rating. Number is found in vm.reviews.general_rating
+      console.log(reviews.general_rating)
+
       var result = reviews.reduce(function (acc, review) {
         return acc + review.rating;
       }, 0);
