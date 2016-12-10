@@ -4,7 +4,7 @@
   "description": "Point Blank is a platform that bluntly reflects how the general populace feels about public figures. ",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,8 +37,10 @@
     "jquery": "^3.1.1",
     "lodash": "^4.17.2",
     "morgan": "^1.7.0",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
+    "pg": "^6.1.0",
     "sequelize": "^3.27.0"
   }
 }

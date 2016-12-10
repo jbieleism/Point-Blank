@@ -18,7 +18,7 @@ const Review = dbConnection.define('review', {
   },
   reviewer_name: {
     type: Sequelize.STRING,
-    defaultValue: 'No name provided.'
+    defaultValue: 'Anonymous'
   }
 });
 
