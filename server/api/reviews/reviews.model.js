@@ -19,7 +19,11 @@ const Review = dbConnection.define('review', {
   reviewer_name: {
     type: Sequelize.STRING,
     defaultValue: 'Anonymous'
-  }
+  },
+  experience_content: {
+    type: Sequelize.TEXT,
+    defaultValue: 'No review provided.'
+  },
 });
 
 Review.belongsTo(User);
