@@ -17,7 +17,7 @@
 
         <form action="#">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label for="rating">General Rating</label> 
+            <label for="rating">General Rating</label>
             <p id="font" style="font-size:2em;">{{vm.reviewRating}}</p>
             <input class="mdl-slider mdl-js-slider" style="margin-left:0;" ng-model="vm.reviewRating" id="rating" type="range" min="0" max="100" value="50" tabindex="0">
 
@@ -47,6 +47,7 @@
   <!-- RIGHT COLUMN #1 (POI NAME/INFO)-->
   <div class="col-md-7 box-shadow spaced div-space">
     <h1>{{ vm.poi.name }}</h1>
+    <div id="chart"></div>
     <h3>General Rating: {{ vm.genRating }}</h3>
     <h6>{{ vm.poi.summary }}</h6>
   </div>

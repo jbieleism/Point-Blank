@@ -21,12 +21,13 @@
       poiService.grabSinglePoiData(url)
         .then(function (results) {
           vm.poi = results;
-          vm.reviews = results.reviews;
+          vm.reviews = results;
+          console.log(vm.reviews)
           vm.genRating = vm.calcGeneralRating(vm.reviews);
         });
     };
     vm.init();
-
+    console.log(vm)
     vm.addReview = function () {
       let poireview = {};
       poireview.reviewType = 'general';
