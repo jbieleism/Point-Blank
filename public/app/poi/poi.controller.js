@@ -25,6 +25,7 @@
           console.log(results)
           vm.genRating = vm.calcGeneralRating(vm.reviews);
         });
+      console.log("THIS IS THE VM:::: ", vm)
     };
     vm.init();
     console.log(vm)
@@ -54,8 +55,7 @@
       var ratingTotal = ratingNumbers.reduce(function (acc, review) {
         return acc + review;
       }, 0);
-      console.log(ratingTotal)
-      console.log( Math.floor(ratingTotal / reviews.length) );
+      return Math.floor(ratingTotal / reviews.length);
     };
   }
 
