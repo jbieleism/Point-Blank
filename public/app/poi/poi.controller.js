@@ -22,7 +22,7 @@
         .then(function (results) {
           vm.poi = results;
           vm.reviews = results.reviews;
-          console.log(results.reviews)
+          console.log(results)
           vm.genRating = vm.calcGeneralRating(vm.reviews);
         });
     };
@@ -43,13 +43,35 @@
 
     vm.calcGeneralRating = function (reviews) {
 
-      //capture the general rating. Number is found in vm.reviews.general_rating
-      console.log(reviews.general_rating)
+      //to calculate the ratings, you must be logged in. Additionally, the reviews para
+      //retrieves a list of review objects with a rating property
+      //push numbers to array and reduce and divide by number of reviews to total average
+      var ratingNumbers = [];
+      var listOfRatings = reviews.forEach(function(review){
+        ratingNumbers.push(review.rating)
+      })
 
-      var result = reviews.reduce(function (acc, review) {
-        return acc + review.rating;
+      var ratingTotal = ratingNumbers.reduce(function (acc, review) {
+        return acc + review;
       }, 0);
-      return Math.floor(result / reviews.length);
+      console.log(ratingTotal)
+      console.log( Math.floor(ratingTotal / reviews.length) );
     };
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })();
