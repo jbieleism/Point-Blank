@@ -17,7 +17,7 @@
 
         <form action="#">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label for="rating">General Rating</label> 
+            <label for="rating">General Rating</label>
             <p id="font" style="font-size:2em;">{{vm.reviewRating}}</p>
             <input class="mdl-slider mdl-js-slider" style="margin-left:0;" ng-model="vm.reviewRating" id="rating" type="range" min="0" max="100" value="50" tabindex="0">
 
@@ -47,7 +47,8 @@
   <!-- RIGHT COLUMN #1 (POI NAME/INFO)-->
   <div class="col-md-7 box-shadow spaced div-space">
     <h1>{{ vm.poi.name }}</h1>
-    <h3>General Rating: {{ vm.genRating }}</h3>
+    <div id="chart"></div>
+    <h3>General Rating: {{ vm.reviews.general_rating }}</h3>
     <h6>{{ vm.poi.summary }}</h6>
   </div>
   <!-- END RIGHT COLUMN #1 -->
@@ -55,7 +56,7 @@
   <!-- RIGHT COLUMN #2 (REVIEWS) -->
   <div class="col-md-7 box-shadow spaced div-space">
     <h3 class="aligned">Reviews</h3>
-    <div ng-repeat="review in vm.reviews | orderBy:'-createdAt'" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
+    <div ng-repeat="review in vm.reviews" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
 
       <div class="table-responsive photoBox">
             <div class="col-sm-4" id="resultName">
@@ -76,6 +77,7 @@
     </div>
   </div>
   <!-- END RIGHT COLUMN #2 -->
+
 
   <!-- RIGHT COLUMN #3 (EXPERIENCES) -->
   <div class="col-md-7 box-shadow spaced div-space">
@@ -100,6 +102,20 @@
         </div>
     </div>
   </div>
+
+    <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+  </ul>
+
+
+
+
+
+
+
+
 
 
   <!--  -->
