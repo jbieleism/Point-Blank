@@ -21,14 +21,15 @@
       url = url.slice(5).split('%20').join(' ')
       poiService.grabSinglePoiData(url)
         .then(function (results) {
-          vm.poi = results
-          vm.reviews = results.reviews
-          console.log('RESULTS: ', results)
-          vm.genRating = vm.calcGeneralRating(vm.reviews)
-        })
-    }
-    vm.init()
-    // console.log(vm)
+          vm.poi = results;
+          vm.reviews = results.reviews;
+          console.log(results)
+          vm.genRating = vm.calcGeneralRating(vm.reviews);
+        });
+      console.log("THIS IS THE VM:::: ", vm)
+    };
+    vm.init();
+    console.log(vm)
     vm.addReview = function () {
       let poireview = {}
       poireview.reviewType = 'general'
@@ -54,13 +55,35 @@
     }
 
     vm.calcGeneralRating = function (reviews) {
-      // capture the general rating. Number is found in vm.reviews.general_rating
-      // console.log(reviews.general_rating)
 
-      var result = reviews.reduce(function (acc, review) {
-        return acc + review.rating
-      }, 0)
-      return Math.floor(result / reviews.length)
-    }
+      //to calculate the ratings, you must be logged in. Additionally, the reviews para
+      //retrieves a list of review objects with a rating property
+      //push numbers to array and reduce and divide by number of reviews to total average
+      var ratingNumbers = [];
+      var listOfRatings = reviews.forEach(function(review){
+        ratingNumbers.push(review.rating)
+      })
+
+      var ratingTotal = ratingNumbers.reduce(function (acc, review) {
+        return acc + review;
+      }, 0);
+      return Math.floor(ratingTotal / reviews.length);
+    };
   }
-})()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})();
