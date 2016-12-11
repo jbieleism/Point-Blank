@@ -22,8 +22,8 @@ const Review = dbConnection.define('review', {
   },
   experience_content: {
     type: Sequelize.TEXT,
-    defaultValue: 'No review provided.'
-  },
+    defaultValue: 'No experience provided.'
+  }
 });
 
 Review.belongsTo(User);
@@ -32,7 +32,7 @@ User.hasMany(Review);
 POI.hasMany(Review);
 
 // will only create table once; use {force: true} to override table
-Review.sync().then(function () {
+Review.sync({force: true}).then(function () {
   console.log('Review table successfuly created.');
 });
 
