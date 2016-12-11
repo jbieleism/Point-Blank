@@ -47,7 +47,7 @@ exports.addOneReview = function (req, res) {
           let ratings = reviews.map((review) => {
             return review.rating;
           })
-
+          console.log(ratings)
           let average = ratings.reduce((acc, reviewNum) => {
             return acc + reviewNum
           }, 0) / ratings.length
