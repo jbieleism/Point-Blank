@@ -25,14 +25,31 @@
             <label class="mdl-textfield__label" for="rating"></label>
             <span class="mdl-textfield__error">Needs to be 0-100!</span>
           </div>
-
-          <div class="mdl-textfield mdl-js-textfield">
-            <label for="textarea">Review</label>
-            <textarea class="mdl-textfield__input" name="textarea" rows="3" cols="45" ng-model="vm.review_content" id="review"></textarea>
-          </div>
-          <div>
+Leave a personal experience:<input type="checkbox" ng-model="checked" aria-label="Toggle ngHide"><br/>
+<div ng-show="checked">
+  <div class="experience">
+    <label for="textarea"></label>
+    <textarea class="mdl-textfield__input" placeholder="Leave a personal experience..."name="textarea" rows="3" cols="45" ng-model="vm.experience_content" id="review"></textarea>
+  </div>
+  <div>
+    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="vm.addExperience(vm.data);">SUBMIT</button>
+  </div>
+</div>
+<!--<div>
+  Hide:
+  <div class="check-element animate-show" ng-hide="checked">
+    <textarea class="mdl-textfield__input" name="textarea" rows="3" cols="45" ng-model="vm.review_content" id="review"></textarea>
+    <span class="glyphicon glyphicon-thumbs-down"></span> I hide when your checkbox is checked.
+  </div>
+</div>-->
+          <div class="mdl-textfield mdl-js-textfield" ng-hide="checked">
+            <label for="textarea"></label>
+            <textarea class="mdl-textfield__input" placeholder="Leave a review..."name="textarea" rows="3" cols="45" ng-model="vm.review_content" id="review"></textarea>
+            <div>
             <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="vm.addReview(vm.data);">Submit</button>
           </div>
+          </div>
+          
         </form>
 
       </div>
@@ -52,9 +69,14 @@
     <h6>{{ vm.poi.summary }}</h6>
   </div>
   <!-- END RIGHT COLUMN #1 -->
+    <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li ng-click="expReviewToggle = !expReviewToggle" role="presentation"><a class="active" role="tab" data-toggle="tab">Reviews</a></li>
+    <li ng-click="expReviewToggle = !expReviewToggle" role="presentation"><a role="tab" aria-label="Toggle ngHide" data-toggle="tab">Personal Experiences</a></li>
+  </ul>
 
   <!-- RIGHT COLUMN #2 (REVIEWS) -->
-  <div class="col-md-7 box-shadow spaced div-space">
+  <div class="col-md-7 box-shadow spaced div-space" ng-hide="expReviewToggle">
     <h3 class="aligned">Reviews</h3>
     <div ng-repeat="review in vm.reviews" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
 
@@ -80,8 +102,8 @@
 
 
   <!-- RIGHT COLUMN #3 (EXPERIENCES) -->
-  <div class="col-md-7 box-shadow spaced div-space">
-    <h3 class="aligned">Reviews</h3>
+  <div class="col-md-7 box-shadow spaced div-space" ng-show="expReviewToggle">
+    <h3 class="aligned">Personal Experiences</h3>
     <div ng-repeat="review in vm.reviews | orderBy:'-createdAt'" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
 
       <div class="table-responsive photoBox">
@@ -93,21 +115,13 @@
             </div>
 
             <div class="col-sm-4 standard-text">
-                <h6 class="">{{ review.review_content || review.reviewContent }}</h6>
-            </div>
-
-            <div class="col-sm-4" id="resultName">
-                <h4 class="aligned">General Rating: <h2 class="genRating">{{ review.rating }} </h2></h4>
-            </div>
+                <h6 class="">{{ review.experience_content || review.experienceContent }}</h6>
+            </div>    
         </div>
     </div>
   </div>
 
-    <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-  </ul>
+  
 
 
 
