@@ -8,6 +8,7 @@
 
   function poiService ($http) {
     var addReviewPoiData = function (poireview) {
+      console.log(poireview)
       return $http({
         method: 'POST',
         url: '/api/review',
@@ -27,7 +28,7 @@
         data: {'name': 'poiInfo'}
       })
       .then(function (results) {
-        console.log(results.data)
+        console.log("These are the results data from grabbing a single POI data: ", results.data)
         return results.data;
       });
     };

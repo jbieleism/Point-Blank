@@ -1,6 +1,6 @@
 require('../../config/db.config.js');
 const Review = require('./reviews.model.js');
-
+const POI = require('../poi/poi.model');
 exports.getAllReviews = function (req, res) {
   Review.findAll()
     .then(function (review) {
@@ -23,6 +23,7 @@ exports.getOneReviewByName = function (req, res) {
 };
 
 exports.addOneReview = function (req, res) {
+  console.log('REQUEST!: ', req.body)
   const reviewType = req.body.reviewType; // MUST BE 'general' OR 'personal'
   const reviewContent = req.body.review_content;
   const rating = req.body.rating || 10;
@@ -38,8 +39,35 @@ exports.addOneReview = function (req, res) {
     poiId: poiId,
     reviewer_name: reviewerName
   })
-    .then(function (review) {
-      res.status(201).json(review);
+    .then(function (savedReview) {
+      // get all the review ratings
+
+      Review.findAll({})
+        .then((reviews) => {
+          let ratings = reviews.map((review) => {
+            return review.rating;
+          })
+
+          let average = ratings.reduce((acc, reviewNum) => {
+            return acc + reviewNum
+          }, 0) / ratings.length
+          console.log(average)
+          return average
+        })
+        .then((averageRating) => {
+          POI.update(
+            {
+              general_rating: averageRating
+            },
+            {
+              where: {
+                id: savedReview.poiId
+              }
+            }
+          )
+          res.status(201).json(savedReview);
+        })
+
     })
     .catch(function (err) {
       res.status(400).send(err);
