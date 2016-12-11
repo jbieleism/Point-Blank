@@ -24,7 +24,7 @@ const POI = dbConnection.define('poi', {
 });
 
 // will only create table once; use {force: true} to override table
-POI.sync({force: true}).then(function () {
+POI.sync().then(function () {
   console.log('POI table successfuly created.');
   // seed database
   POI.create({
