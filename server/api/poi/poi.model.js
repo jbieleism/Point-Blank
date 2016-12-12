@@ -26,14 +26,14 @@ const POI = dbConnection.define('poi', {
 
 // will only create table once; use {force: true} to override table
 POI.sync().then(function () {
-  console.log('POI table successfuly created.');
-  // seed database
+
+  // console.log('POI table successfuly created.');
+  // // seed database
   // POI.create({
   //   name: 'Mark Zuckerberg',
   //   summary: 'American computer programmer, internet entrepreneur, and philanthropist. He is the chairman, chief executive officer, and co-founder of social networking website Facebook.',
   //   profile_image_url: 'http://i.imgur.com/ks3bsZW.jpg',
-  //   general_rating: 0,
-
+  //   general_rating: 0
   // });
 
   // POI.create({
