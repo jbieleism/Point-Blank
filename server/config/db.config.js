@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 const creds = require('./credentials');
 
 // creates database connection credentials needed to connect to DB via Sequelize
-const dburl = `postgres://${creds.username}:${creds.password}@elmer.db.elephantsql.com:5432/pvkavikw`;
+const dburl = `postgres://${creds.username}:${creds.password}@elmer.db.elephantsql.com:5432/lbzwvhrm`;
 
 // database connection
 const dbConnection = new Sequelize(dburl);

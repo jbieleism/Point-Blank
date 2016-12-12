@@ -40,12 +40,4 @@
   }
 
 
-  var chart = c3.generate({
-    donut: {
-        title: "Iris Petal Width"
-    }
-  });
-
-
-
 })();
