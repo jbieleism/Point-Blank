@@ -15,6 +15,8 @@
         data: poireview
       })
       .then(function (results) {
+        document.querySelector('.mdl-textfield__input').value = ''
+        document.querySelector('.mdl-textfield__input2').value = ''
         console.log(results)
         return results;
       });
@@ -38,14 +40,6 @@
       grabSinglePoiData: grabSinglePoiData
     };
   }
-
-
-  var chart = c3.generate({
-    donut: {
-        title: "Iris Petal Width"
-    }
-  });
-
 
 
 })();

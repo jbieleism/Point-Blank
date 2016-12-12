@@ -22,7 +22,7 @@ const Review = dbConnection.define('review', {
   },
   experience_content: {
     type: Sequelize.TEXT,
-    defaultValue: 'No experience provided.'
+    defaultValue: ''
   }
 });
 
