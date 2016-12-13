@@ -2,9 +2,12 @@
   'use strict';
 
   angular
-    .module('point-blank', ['ui.router', 'point-blank.splash', 'point-blank.poi', 'point-blank.search', 'point-blank.auth'])
+    .module('point-blank', ['ui.router', 'point-blank.splash', 'point-blank.poi', 'point-blank.search', 'point-blank.auth', 'xeditable'])
     .config(config)
-    .run(run);
+    .run(run)
+    .run((editableOptions) => {
+      editableOptions.theme = 'bs3' // bootstrap3 theme. Can be also 'bs2', 'default'
+  });
 
   function config ($stateProvider, $urlRouterProvider) {
     $stateProvider

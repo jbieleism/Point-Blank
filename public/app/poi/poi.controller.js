@@ -29,6 +29,14 @@
     };
     vm.init();
     console.log(vm)
+    vm.addPut = () => {
+      
+      let poireview = {}
+      poireview.review_content = vm.review_content
+      poireview.experience_content = vm.experience_content
+      poiService.addPutData(poireview)
+      console.log("POIREVIEW: ", poireview)
+    }
     vm.addReview = function () {
       let poireview = {}
       poireview.reviewType = 'general'
