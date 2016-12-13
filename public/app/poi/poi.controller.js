@@ -21,12 +21,14 @@
       url = url.slice(5).split('%20').join(' ')
       poiService.grabSinglePoiData(url)
         .then(function (results) {
-          vm.poi = results
-          vm.reviews = results.reviews
-          vm.genRating = vm.calcGeneralRating(vm.reviews)
-        })
-    }
-    vm.init()
+          vm.poi = results;
+          vm.reviews = results.reviews;
+          vm.genRating = vm.calcGeneralRating(vm.reviews);
+          vm.createChart()
+        });
+    };
+    vm.init();
+    console.log(vm)
     vm.addReview = function () {
       let poireview = {}
       poireview.reviewType = 'general'
@@ -36,9 +38,14 @@
       poireview.facebookId = $rootScope.facebookId
       poireview.review_content = vm.review_content
       poireview.rating = vm.reviewRating
-
+      poireview.general_rating = vm.genRating
       vm.reviews.unshift(poireview)
       poiService.addReviewPoiData(poireview)
+
+      vm.eachRatingMarkers.push(vm.reviewRating)
+      vm.genRatingMarkers.push(vm.genRating)
+      console.log(vm.genRating)
+      vm.createChart()
     }
     vm.addExperience = function () {
       let poireview = {}
@@ -60,22 +67,55 @@
       var ratingNumbers = []
       var listOfRatings = reviews.forEach(function (review) {
         ratingNumbers.push(review.rating)
+        vm.eachRatingMarkers.push(review.rating)
       })
 
       var ratingTotal = ratingNumbers.reduce(function (acc, review) {
-        return acc + review
-      }, 0)
-      return Math.floor(ratingTotal / reviews.length)
+        return acc + review;
+      }, 0);
+
+      vm.genRatingMarkers.push(Math.floor(ratingTotal / reviews.length))
+      return Math.floor(ratingTotal / reviews.length);
+    };
+
+    vm.plotGenRating = function() {
+      console.log(vm.calGeneralRating())
     }
 
-    vm.chart = c3.generate({
-      bindto: '#chart',
-      data: {
-        columns: [
-          ['data1', 30, 200, 100, 400, 150, 250],
-          ['data2', 40, 20, 10, 40, 15, 25]
-        ]
-      }
-    })
+    vm.eachRatingMarkers = ['Individual Rating']
+    vm.genRatingMarkers = ['General Rating']
+
+    vm.createChart = function() {
+      c3.generate({
+        bindto: '#chart',
+        data: {
+          columns: [
+            vm.eachRatingMarkers,
+            vm.genRatingMarkers
+          ],
+          types:{
+            'General Rating': 'area'
+          }
+        },
+        axis: {
+          y: {
+            max: 100,
+            min: 10
+          }
+        },
+        grid: {
+          y: {
+            lines: [
+              {value: 40, text: 'POS Threshold', area: 'red'}
+            ]
+          },
+          types:{
+            y: 'area'
+          }
+        }
+      });
+    }
+
+
   }
 })()

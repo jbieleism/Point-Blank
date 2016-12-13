@@ -32,6 +32,7 @@ exports.addOneReview = function (req, res) {
   const experienceContent = req.body.experience_content;
   const facebookId = req.body.facebookId;
 
+  const generalRating = req.body.general_rating;
 
   Review.create({
     review_type: reviewType,
@@ -42,6 +43,7 @@ exports.addOneReview = function (req, res) {
     reviewer_name: reviewerName,
     experience_content: experienceContent,
     facebookId: facebookId
+    general_rating: generalRating
 
   })
     .then(function (savedReview) {

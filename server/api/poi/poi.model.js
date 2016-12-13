@@ -27,7 +27,7 @@ const POI = dbConnection.define('poi', {
 // will only create table once; use {force: true} to override table
 POI.sync().then(function () {
 
-  // // seed database
+// // seed database
 
 // POI.create({
   //   name: 'Mark Zuckerberg',
