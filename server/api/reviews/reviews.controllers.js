@@ -42,7 +42,7 @@ exports.addOneReview = function (req, res) {
     poiId: poiId,
     reviewer_name: reviewerName,
     experience_content: experienceContent,
-    facebookId: facebookId
+    facebookId: facebookId,
     general_rating: generalRating
 
   })
