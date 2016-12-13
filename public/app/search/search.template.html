@@ -25,7 +25,9 @@
             </div>
         </div>
     </form>
+
   </div>
+                <div id="donutChart"></div>
 
 
 <!--This is the repeat directive allowing us to iterate through the POI list. Here, we also use a filter pipe to determine whether the vm.searchTerm (the string the user is interested in filtering by) is found inside any poi text description or review. This directive also as an ng-show condition that evaluates 'vm.all' in order to hide or show the POI. If 'vm.all' exists, it uses the value to decide whether to hide or show the POI. If 'vm.all' is null, it calls vm.isPOS function and returns true or false based based on whether the rating is less than 40. -->
@@ -45,7 +47,6 @@
 
             <div class="col-sm-3 col-md-3 col-xs-3" id="genReviewCount">
                 <h3 id="font" style="color:white">General Rating</h3>
-                <div id="donutChart"></div>
                 <div id="poiSearchRating">{{ poi.general_rating }}</div>
             </div>
 
