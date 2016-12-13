@@ -23,13 +23,21 @@
         .then(function (results) {
           vm.poi = results;
           vm.reviews = results.reviews;
-          vm.genRating = vm.calcGeneralRating(vm.reviews);
+          vm.genRating = vm.calcGeneralRating(vm.reviews) || 0;
           vm.createChart()
         });
     };
     vm.init();
-    console.log(vm)
     vm.addReview = function () {
+
+      if (vm.genRating === 0){
+        vm.genRating = vm.reviewRating
+      }
+
+      vm.eachRatingMarkers = ['Individual Rating']
+      vm.genRatingMarkers = ['General Rating']
+
+      console.log(vm.reviews)
       let poireview = {}
       poireview.reviewType = 'general'
       poireview.userId = $rootScope.id
@@ -39,11 +47,15 @@
       poireview.review_content = vm.review_content
       poireview.rating = vm.reviewRating
       poireview.general_rating = vm.genRating
-      vm.reviews.unshift(poireview)
+      vm.reviews.push(poireview)
+
+      vm.genRating = vm.calcGeneralRating(vm.reviews)
+
       poiService.addReviewPoiData(poireview)
 
-      vm.eachRatingMarkers.push(vm.reviewRating)
-      vm.genRatingMarkers.push(vm.genRating)
+
+
+
       //console.log(vm.genRating)
       vm.createChart()
     }
@@ -65,15 +77,16 @@
       // push numbers to array and reduce and divide by number of reviews to total average
       var ratingNumbers = []
       var listOfRatings = reviews.forEach(function (review) {
-        ratingNumbers.push(review.rating)
+        ratingNumbers.push(parseInt(review.rating))
         vm.eachRatingMarkers.push(review.rating)
+        vm.genRatingMarkers.push(review.general_rating)
       })
 
       var ratingTotal = ratingNumbers.reduce(function (acc, review) {
         return acc + review;
       }, 0);
 
-      vm.genRatingMarkers.push(Math.floor(ratingTotal / reviews.length))
+      vm.genRatingMarkers.push(Math.floor(ratingTotal/ratingNumbers.length))
       return Math.floor(ratingTotal / reviews.length);
     };
 
