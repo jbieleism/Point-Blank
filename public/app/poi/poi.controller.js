@@ -21,21 +21,19 @@
       url = url.slice(5).split('%20').join(' ')
       poiService.grabSinglePoiData(url)
         .then(function (results) {
-          vm.poi = results;
-          vm.reviews = results.reviews;
-          console.log(results)
-          vm.genRating = vm.calcGeneralRating(vm.reviews);
-        });
-      console.log("THIS IS THE VM:::: ", vm)
-    };
-    vm.init();
-    console.log(vm)
+          vm.poi = results
+          vm.reviews = results.reviews
+          vm.genRating = vm.calcGeneralRating(vm.reviews)
+        })
+    }
+    vm.init()
     vm.addReview = function () {
       let poireview = {}
       poireview.reviewType = 'general'
       poireview.userId = $rootScope.id
       poireview.poiId = vm.poi.id
       poireview.reviewer_name = $rootScope.name
+      poireview.facebookId = $rootScope.facebookId
       poireview.review_content = vm.review_content
       poireview.rating = vm.reviewRating
 
@@ -48,6 +46,7 @@
       poireview.userId = $rootScope.id
       poireview.poiId = vm.poi.id
       poireview.reviewer_name = $rootScope.name
+      poireview.facebookId = $rootScope.facebookId
       poireview.experience_content = vm.experience_content
 
       vm.reviews.unshift(poireview)
@@ -55,21 +54,19 @@
     }
 
     vm.calcGeneralRating = function (reviews) {
-
-      //to calculate the ratings, you must be logged in. Additionally, the reviews para
-      //retrieves a list of review objects with a rating property
-      //push numbers to array and reduce and divide by number of reviews to total average
-      var ratingNumbers = [];
-      var listOfRatings = reviews.forEach(function(review){
+      // to calculate the ratings, you must be logged in. Additionally, the reviews para
+      // retrieves a list of review objects with a rating property
+      // push numbers to array and reduce and divide by number of reviews to total average
+      var ratingNumbers = []
+      var listOfRatings = reviews.forEach(function (review) {
         ratingNumbers.push(review.rating)
       })
 
       var ratingTotal = ratingNumbers.reduce(function (acc, review) {
-        return acc + review;
-      }, 0);
-      return Math.floor(ratingTotal / reviews.length);
-    };
-
+        return acc + review
+      }, 0)
+      return Math.floor(ratingTotal / reviews.length)
+    }
 
     vm.chart = c3.generate({
       bindto: '#chart',
@@ -79,23 +76,6 @@
           ['data2', 40, 20, 10, 40, 15, 25]
         ]
       }
-    });
-
+    })
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-})();
+})()
