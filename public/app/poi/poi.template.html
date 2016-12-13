@@ -25,10 +25,10 @@
 <div ng-show="expReviewToggle">
   <div class="experience">
     <label for="textarea"></label>
-    <textarea class="mdl-textfield__input" placeholder="Leave a personal experience..."name="textarea" rows="3" cols="45" ng-model="vm.experience_content" id="review"></textarea>
+    <textarea class="mdl-textfield__input" placeholder="Leave a personal experience..."name="textarea" rows="4" cols="65" ng-model="vm.experience_content" id="review"></textarea>
   </div>
   <div>
-    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="vm.addExperience(vm.data);">SUBMIT</button>
+    <button type="button" class="btn btn-default" ng-click="vm.addExperience(vm.data);">SUBMIT</button>
   </div>
 </div>
 <!--<div>
@@ -40,9 +40,9 @@
 </div>-->
           <div class="mdl-textfield mdl-js-textfield" ng-hide="expReviewToggle">
             <label for="textarea"></label>
-            <textarea class="mdl-textfield__input2" placeholder="Leave a review..."name="textarea" rows="3" cols="45" ng-model="vm.review_content" id="review"></textarea>
+            <textarea class="mdl-textfield__input2" placeholder="Leave a review..."name="textarea" rows="4" cols="65" ng-model="vm.review_content" id="review"></textarea>
             <div>
-            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="vm.addReview(vm.data);">Submit</button>
+            <button type="button" class="btn btn-default" ng-click="vm.addReview(vm.data);">SUBMIT</button>
           </div>
           </div>
 
@@ -58,7 +58,7 @@
   <!-- END LEFT COLUMN -->
 
   <!-- RIGHT COLUMN #1 (POI NAME/INFO)-->
-  <div class="col-md-7 box-shadow spaced div-space">
+  <div class="col-md-8 box-shadow spaced div-space">
     <h1>{{ vm.poi.name }}</h1>
     <div id="chart"></div>
     <h3>General Rating: {{ vm.genRating || 0 }} </h3>
@@ -66,15 +66,17 @@
   </div>
   <!-- END RIGHT COLUMN #1 -->
     <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li ng-click="expReviewToggle = !expReviewToggle" role="presentation"><a class="active" role="tab" data-toggle="tab">Reviews</a></li>
-    <li ng-click="expReviewToggle = !expReviewToggle" role="presentation"><a role="tab" aria-label="Toggle ngHide" data-toggle="tab">Personal Experiences</a></li>
-  </ul>
+    <div id="poi-nav">
+      <ul class="nav nav-pills nav-justified">
+        <li ng-click="expReviewToggle = !expReviewToggle" role="presentation" class="active"><a>Reviews</a></li>
+        <li ng-click="expReviewToggle = !expReviewToggle" role="presentation" class="active"><a>Personal Experiences</a></li>
+      </ul>
+    </div>
 
   <!-- RIGHT COLUMN #2 (REVIEWS) -->
-  <div class="col-md-7 box-shadow spaced div-space" ng-hide="expReviewToggle">
+  <div class="col-md-12 box-shadow spaced div-space" ng-hide="expReviewToggle">
     <h3 class="aligned">Reviews</h3>
-    <div ng-repeat="review in vm.reviews" ng-if="review.rating"class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
+    <div ng-repeat="review in vm.reviews" ng-if="review.reviewType"class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
 
       <div class="table-responsive photoBox">
             <div class="col-sm-3" id="resultName">
@@ -86,7 +88,7 @@
                 <h4>{{ review.reviewer_name }}</h4>
             </div>
 
-            <div class="col-sm-4 standard-text">
+            <div class="col-sm-5 standard-text">
                 <h6 class="">{{ review.review_content || review.reviewContent }}</h6>
             </div>
 
@@ -101,7 +103,7 @@
 
 
   <!-- RIGHT COLUMN #3 (EXPERIENCES) -->
-  <div class="col-md-7 box-shadow spaced div-space" ng-show="expReviewToggle">
+  <div class="col-md-12 box-shadow spaced div-space" ng-show="expReviewToggle">
     <h3 class="aligned">Personal Experiences</h3>
     <div ng-repeat="review in vm.reviews | orderBy:'-createdAt'" ng-if="review.experience_content"class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
 

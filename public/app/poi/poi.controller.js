@@ -44,12 +44,11 @@
 
       vm.eachRatingMarkers.push(vm.reviewRating)
       vm.genRatingMarkers.push(vm.genRating)
-      console.log(vm.genRating)
+      //console.log(vm.genRating)
       vm.createChart()
     }
     vm.addExperience = function () {
       let poireview = {}
-      poireview.reviewType = 'general'
       poireview.userId = $rootScope.id
       poireview.poiId = vm.poi.id
       poireview.reviewer_name = $rootScope.name
