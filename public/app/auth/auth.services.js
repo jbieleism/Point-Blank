@@ -17,7 +17,7 @@
         });
     }
 
-    var isLoggedIn = false;
+    var isLoggedIn;
 
     return {
       authService: authService,
