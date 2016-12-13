@@ -28,7 +28,6 @@
         data: {'name': 'poiInfo'}
       })
       .then(function (results) {
-        console.log("These are the results data from grabbing a single POI data: ", results.data)
         return results.data;
       });
     };

@@ -45,7 +45,7 @@
             <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="vm.addReview(vm.data);">Submit</button>
           </div>
           </div>
-          
+
         </form>
 
       </div>
@@ -61,7 +61,7 @@
   <div class="col-md-7 box-shadow spaced div-space">
     <h1>{{ vm.poi.name }}</h1>
     <div id="chart"></div>
-    <h3>General Rating: {{ vm.genRating }}</h3>
+    <h3>General Rating: {{ vm.genRating || 0 }} </h3>
     <h6>{{ vm.poi.summary }}</h6>
   </div>
   <!-- END RIGHT COLUMN #1 -->
@@ -113,7 +113,7 @@
 
             <div class="col-sm-8 standard-text">
                 <h6 class="">{{ review.experience_content || review.experienceContent }}</h6>
-            </div>    
+            </div>
         </div>
     </div>
   </div>
