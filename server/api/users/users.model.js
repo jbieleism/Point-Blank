@@ -26,7 +26,6 @@ const User = dbConnection.define('user', {
 
 // will only create table once; use {force: true} to override table
 User.sync().then(function () {
-  console.log('User table successfuly created.');
 });
 
 module.exports = User;

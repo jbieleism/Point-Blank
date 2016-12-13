@@ -17,7 +17,7 @@
     vm.init = function () {
       searchService.getInitData()
       .then(function (results) {
-        console.log(results)
+        //console.log(results)
         vm.poiList = results;
       });
     };

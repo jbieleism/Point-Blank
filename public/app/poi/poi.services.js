@@ -8,14 +8,14 @@
 
   function poiService ($http) {
     var addReviewPoiData = function (poireview) {
-      console.log(poireview)
       return $http({
         method: 'POST',
         url: '/api/review',
         data: poireview
       })
       .then(function (results) {
-        console.log(results)
+        document.querySelector('.mdl-textfield__input').value = ''
+        document.querySelector('.mdl-textfield__input2').value = ''
         return results;
       });
     };
@@ -28,7 +28,6 @@
         data: {'name': 'poiInfo'}
       })
       .then(function (results) {
-        console.log("These are the results data from grabbing a single POI data: ", results.data)
         return results.data;
       });
     };
