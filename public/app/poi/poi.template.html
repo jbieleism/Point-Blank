@@ -40,7 +40,7 @@
 </div>-->
           <div class="mdl-textfield mdl-js-textfield" ng-hide="expReviewToggle">
             <label for="textarea"></label>
-            <textarea class="mdl-textfield__input2" placeholder="Leave a review..."name="textarea" rows="4" cols="65" ng-model="vm.review_content" id="review"></textarea>
+            <textarea placeholder="Leave a review..." name="textarea" rows="4" cols="65" ng-model="vm.review_content" id="review"></textarea>
             <div>
             <button type="button" class="btn btn-default" ng-click="vm.addReview(vm.data);">SUBMIT</button>
           </div>
@@ -58,7 +58,7 @@
   <!-- END LEFT COLUMN -->
 
   <!-- RIGHT COLUMN #1 (POI NAME/INFO)-->
-  <div class="col-md-8 box-shadow spaced div-space">
+  <div class="col-md-7 box-shadow">
     <h1>{{ vm.poi.name }}</h1>
     <div id="chart"></div>
     <h3>General Rating: {{ vm.genRating || 0 }} </h3>
@@ -82,14 +82,14 @@
             <div class="col-sm-3" id="resultName">
                 <div style="padding-top: 20px">
                   <i  class="material-icons mdl-list__item-avatar"></i>
-                   <img ng-src="//graph.facebook.com/{{review.facebookId}}/picture?width=170&height=170 "> 
-                  
+                   <img ng-src="//graph.facebook.com/{{review.facebookId}}/picture?width=170&height=170 ">
+
                 </div>
                 <h4>{{ review.reviewer_name }}</h4>
             </div>
 
             <div class="col-sm-5 standard-text">
-                <h6 class="">{{ review.review_content || review.reviewContent }}</h6>
+                <h6 class="reviewBody">{{ review.review_content || review.reviewContent }}</h6>
             </div>
 
             <div class="col-sm-4" id="resultName">
@@ -111,7 +111,7 @@
             <div class="col-sm-4" id="resultName">
                 <div style="padding-top: 20px">
                   <i class="material-icons mdl-list__item-avatar"></i>
-                  <img ng-src="//graph.facebook.com/{{review.facebookId}}/picture?width=170&height=170 "> 
+                  <img ng-src="//graph.facebook.com/{{review.facebookId}}/picture?width=170&height=170 ">
                 </div>
                 <h4>{{ review.reviewer_name }}</h4>
             </div>

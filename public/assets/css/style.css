@@ -58,14 +58,32 @@
   margin-right: 50px;
 }
 
+#resultName{
+  color:white;
+}
+
 .photo-box-img {
   width: 250px;
   height: auto;
 }
 
+#reviewBody{
+  font-size: 20;
+}
 .review-text {
   font-size: 16;
 }
+#chart{
+  color:black;
+}
+#poiSearchRating{
+  color:white;
+}
+
+#donutChart{
+  position:relative;
+}
+
 
 /* CUSTOM DESIGN */
 .div-space {
