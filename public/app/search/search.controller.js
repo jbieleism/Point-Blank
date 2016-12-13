@@ -19,6 +19,11 @@
       .then(function (results) {
         //console.log(results)
         vm.poiList = results;
+        vm.ratings = [];
+        results.forEach(function(poi){
+          vm.ratings.push(poi.general_rating)
+        })
+        vm.createChart()
       });
     };
     vm.init();
@@ -33,27 +38,27 @@
       return $location.path('/poi/' + poiInfo);
     };
 
-    vm.createChart = function(){
 
 
+    vm.createChart = function() {
       c3.generate({
+        bindto: '#donutChart',
         data: {
-            bindto: '#chart',
-
-            columns: [
-                ['data1', 30],
-                ['data2', 120],
-            ],
-            type : 'donut',
-            onclick: function (d, i) { console.log("onclick", d, i); },
-            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+          columns: [
+              ['data1'],
+              ['data2'],
+          ],
+          type : 'donut',
+          onclick: function (d, i) { console.log("onclick", d, i); },
+          onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+          onmouseout: function (d, i) { console.log("onmouseout", d, i); }
         },
         donut: {
-            title: "Iris Petal Width"
+            title: "Average Rating"
         }
       });
     }
+
   }
 
 })();

@@ -27,6 +27,7 @@
     </form>
   </div>
 
+
 <!--This is the repeat directive allowing us to iterate through the POI list. Here, we also use a filter pipe to determine whether the vm.searchTerm (the string the user is interested in filtering by) is found inside any poi text description or review. This directive also as an ng-show condition that evaluates 'vm.all' in order to hide or show the POI. If 'vm.all' exists, it uses the value to decide whether to hide or show the POI. If 'vm.all' is null, it calls vm.isPOS function and returns true or false based based on whether the rating is less than 40. -->
   <div ng-show="vm.all || vm.isPOS(poi)" ng-repeat="poi in vm.poiList | filter:vm.searchTerm" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <br>
@@ -43,18 +44,18 @@
             </div>
 
             <div class="col-sm-3 col-md-3 col-xs-3" id="genReviewCount">
-                <h3 id="font">General Rating</h3>
-                <div class="chart"></div>
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-                    {{ poi.general_rating }}
-                </button>
+                <h3 id="font" style="color:white">General Rating</h3>
+                <div id="donutChart"></div>
+                <div id="poiSearchRating">{{ poi.general_rating }}</div>
             </div>
 
             <div class="col-sm-2 col-md-2 col-xs-2" id="reviewCount">
                 <span class="mdl-badge" data-badge="{{ poi.reviews.length }}">Reviews</span>
             </div>
         </a>
+
     </div>
+
   </div>
 
 </div>
