@@ -76,7 +76,7 @@
   <!-- RIGHT COLUMN #2 (REVIEWS) -->
   <div class="col-md-12 box-shadow spaced div-space" ng-hide="expReviewToggle">
     <h3 class="aligned">Reviews</h3>
-    <div ng-repeat="review in vm.reviews" ng-if="review.reviewType"class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
+    <div ng-repeat="review in vm.reviews" ng-if="review.review_content"class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spaced">
 
       <div class="table-responsive photoBox">
             <div class="col-sm-3" id="resultName">
@@ -88,8 +88,12 @@
                 <h4>{{ review.reviewer_name }}</h4>
             </div>
 
-            <div class="col-sm-5 standard-text">
+            <div class="col-sm-5 standard-text" ng-model="vm.review_content">
+              <span editable-text="review.review_content" e-form="textBtnForm" >
                 <h6 class="">{{ review.review_content || review.reviewContent }}</h6>
+                <button class="btn btn-default" ng-click="textBtnForm.$show() && vm.addPut(vm.data)" ng-hide="textBtnForm.$visible">
+    edit
+  </button>
             </div>
 
             <div class="col-sm-4" id="resultName">
@@ -117,7 +121,10 @@
             </div>
 
             <div class="col-sm-8 standard-text">
+           <a editable-textarea="review.experience_content" e-rows="11" e-cols="100">
                 <h6 class="">{{ review.experience_content || review.experienceContent }}</h6>
+                
+
             </div>
         </div>
     </div>
