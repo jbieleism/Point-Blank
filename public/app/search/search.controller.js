@@ -19,13 +19,21 @@
       .then(function (results) {
         //console.log(results)
         vm.poiList = results;
-        vm.ratings = [];
         results.forEach(function(poi){
-          vm.ratings.push(poi.general_rating)
+          console.log(poi.general_rating)
+          if (poi.general_rating < 80 || poi.general_rating === null){
+            vm.badRatings.push(poi.general_rating)
+          }
+          else{
+            vm.goodRatings.push(poi.general_rating)
+          }
         })
         vm.createChart()
       });
     };
+    vm.goodRatings = ['% POI']
+    vm.badRatings = ['% POS']
+    vm.nulls = []
     vm.init();
 
     // this function is used for the POS filtering, it evaluates whether the general POI rating is less than 40, returning true or false
@@ -39,19 +47,15 @@
     };
 
 
-
     vm.createChart = function() {
       c3.generate({
         bindto: '#donutChart',
         data: {
           columns: [
-              ['data1'],
-              ['data2'],
+              vm.goodRatings,
+              vm.badRatings
           ],
-          type : 'donut',
-          onclick: function (d, i) { console.log("onclick", d, i); },
-          onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-          onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+          type : 'donut'
         },
         donut: {
             title: "Average Rating"
