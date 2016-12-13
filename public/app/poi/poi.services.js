@@ -20,6 +20,18 @@
       });
     };
 
+    let addPutData = (poireview) => {
+      return $http({
+        method: 'PUT',
+        url: '/api/review',
+        data: poireview
+
+      })
+      .then((results) => {
+        return results
+      })
+    }
+
     var grabSinglePoiData = function (poiInfo) {
       return $http({
         method: 'GET',

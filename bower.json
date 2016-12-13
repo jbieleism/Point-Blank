@@ -1,0 +1,28 @@
+{
+  "name": "point-blank",
+  "description": "Point Blank is a platform that bluntly reflects how the general populace feels about public figures.",
+  "main": "app.js",
+  "authors": [
+    "Joshua Pace <joshpace@gmail.com>"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "sequelize",
+    "express",
+    "angular",
+    "node",
+    "postgresql",
+    "crowdsource"
+  ],
+  "homepage": "https://github.com/jcpace/Point-Blank",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-xeditable": "^0.5.0"
+  }
+}
