@@ -80,7 +80,7 @@
             <div class="col-sm-3" id="resultName">
                 <div style="padding-top: 20px">
                   <i  class="material-icons mdl-list__item-avatar"></i>
-                  <img src="//graph.facebook.com/10157956948470217/picture"> 
+                   <img ng-src="//graph.facebook.com/{{review.facebookId}}/picture?width=170&height=170 "> 
                   
                 </div>
                 <h4>{{ review.reviewer_name }}</h4>
@@ -109,7 +109,7 @@
             <div class="col-sm-4" id="resultName">
                 <div style="padding-top: 20px">
                   <i class="material-icons mdl-list__item-avatar"></i>
-                  <img src="//graph.facebook.com/" + {{review.userId.facebookId}} + "/picture"> 
+                  <img ng-src="//graph.facebook.com/{{review.facebookId}}/picture?width=170&height=170 "> 
                 </div>
                 <h4>{{ review.reviewer_name }}</h4>
             </div>

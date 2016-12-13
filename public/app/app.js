@@ -55,6 +55,7 @@
             $rootScope.loggedIn = true;
             $rootScope.id = response.data.id;      // logged in user's id
             $rootScope.name = response.data.name;  // logged in user's name
+            $rootScope.facebookId = response.data.facebookId //facebookId added to rootscope
             $state.go(toState.name);
           }
         });

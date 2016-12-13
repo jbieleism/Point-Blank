@@ -23,7 +23,6 @@ exports.getOneReviewByName = function (req, res) {
 };
 
 exports.addOneReview = function (req, res) {
-  console.log('REQUEST!: ', req.body)
   const reviewType = req.body.reviewType; // MUST BE 'general' OR 'personal'
   const reviewContent = req.body.review_content;
   const rating = req.body.rating || 10;
@@ -31,6 +30,7 @@ exports.addOneReview = function (req, res) {
   const poiId = req.body.poiId;
   const reviewerName = req.body.reviewer_name;
   const experienceContent = req.body.experience_content;
+  const facebookId = req.body.facebookId;
 
 
   Review.create({
@@ -40,7 +40,8 @@ exports.addOneReview = function (req, res) {
     userId: userId,
     poiId: poiId,
     reviewer_name: reviewerName,
-    experience_content: experienceContent
+    experience_content: experienceContent,
+    facebookId: facebookId
 
   })
     .then(function (savedReview) {
@@ -51,11 +52,9 @@ exports.addOneReview = function (req, res) {
           let ratings = reviews.map((review) => {
             return review.rating;
           })
-          console.log(ratings)
           let average = ratings.reduce((acc, reviewNum) => {
             return acc + reviewNum
           }, 0) / ratings.length
-          console.log(average)
           return average
         })
         .then((averageRating) => {

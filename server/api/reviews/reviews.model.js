@@ -23,17 +23,19 @@ const Review = dbConnection.define('review', {
   experience_content: {
     type: Sequelize.TEXT,
     defaultValue: ''
+  },
+  facebookId: {
+    type: Sequelize.STRING
   }
-});
+})
 
-Review.belongsTo(User);
-Review.belongsTo(POI);
-User.hasMany(Review);
-POI.hasMany(Review);
+Review.belongsTo(User)
+Review.belongsTo(POI)
+User.hasMany(Review)
+POI.hasMany(Review)
 
 // will only create table once; use {force: true} to override table
 Review.sync().then(function () {
-  console.log('Review table successfuly created.');
-});
+})
 
-module.exports = Review;
+module.exports = Review
