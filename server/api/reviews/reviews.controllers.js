@@ -31,7 +31,7 @@ exports.addOneReview = function (req, res) {
   const poiId = req.body.poiId;
   const reviewerName = req.body.reviewer_name;
   const experienceContent = req.body.experience_content;
-
+  const generalRating = req.body.general_rating;
 
   Review.create({
     review_type: reviewType,
@@ -40,7 +40,8 @@ exports.addOneReview = function (req, res) {
     userId: userId,
     poiId: poiId,
     reviewer_name: reviewerName,
-    experience_content: experienceContent
+    experience_content: experienceContent,
+    general_rating: generalRating
 
   })
     .then(function (savedReview) {

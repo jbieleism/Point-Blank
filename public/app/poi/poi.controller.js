@@ -37,9 +37,10 @@
       poireview.reviewer_name = $rootScope.name
       poireview.review_content = vm.review_content
       poireview.rating = vm.reviewRating
-
+      poireview.general_rating = vm.genRating
       vm.reviews.unshift(poireview)
       poiService.addReviewPoiData(poireview)
+
       vm.eachRatingMarkers.push(vm.reviewRating)
       vm.genRatingMarkers.push(vm.genRating)
       console.log(vm.genRating)

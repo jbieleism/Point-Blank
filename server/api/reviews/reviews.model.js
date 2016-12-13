@@ -32,7 +32,7 @@ User.hasMany(Review);
 POI.hasMany(Review);
 
 // will only create table once; use {force: true} to override table
-Review.sync().then(function () {
+Review.sync({}).then(function () {
   console.log('Review table successfuly created.');
 });
 
