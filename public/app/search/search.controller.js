@@ -19,8 +19,21 @@
       .then(function (results) {
         //console.log(results)
         vm.poiList = results;
+        results.forEach(function(poi){
+          console.log(poi.general_rating)
+          if (poi.general_rating < 80 || poi.general_rating === null){
+            vm.badRatings.push(poi.general_rating)
+          }
+          else{
+            vm.goodRatings.push(poi.general_rating)
+          }
+        })
+        vm.createChart()
       });
     };
+    vm.goodRatings = ['% POI']
+    vm.badRatings = ['% POS']
+    vm.nulls = []
     vm.init();
 
     // this function is used for the POS filtering, it evaluates whether the general POI rating is less than 40, returning true or false
@@ -33,27 +46,23 @@
       return $location.path('/poi/' + poiInfo);
     };
 
-    vm.createChart = function(){
 
-
+    vm.createChart = function() {
       c3.generate({
+        bindto: '#donutChart',
         data: {
-            bindto: '#chart',
-
-            columns: [
-                ['data1', 30],
-                ['data2', 120],
-            ],
-            type : 'donut',
-            onclick: function (d, i) { console.log("onclick", d, i); },
-            onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+          columns: [
+              vm.goodRatings,
+              vm.badRatings
+          ],
+          type : 'donut'
         },
         donut: {
-            title: "Iris Petal Width"
+            title: "Average Rating"
         }
       });
     }
+
   }
 
 })();
