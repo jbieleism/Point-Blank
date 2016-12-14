@@ -3,19 +3,20 @@
 
 # Point Blank
 
-Point Blank aims to crowdsource public opinion to better understand how society perceives today's 
+Point Blank aims to crowdsource public opinion to better understand how society perceives today's
 Persons of Influence (POI). POI include but are not limited to celebrities, political/religious
-figures, scholars, and more. POI are not necessarily positive influences on society. Their status as 
-well-known public figures means their actions can always be readily scrutinized. Point Blank strives to 
-recognize POI who have made a positive impact to make the world a better place, and at the same time, 
-condemn those who undermine the integrity of being in such a spotlight. Dishonesty, scandals, bigotry, 
+figures, scholars, and more. POI are not necessarily positive influences on society. Their status as
+well-known public figures means their actions can always be readily scrutinized. Point Blank strives to
+recognize POI who have made a positive impact to make the world a better place, and at the same time,
+condemn those who undermine the integrity of being in such a spotlight. Dishonesty, scandals, bigotry,
 corruption, and so on are the triggers that turn a POI into a POS (Piece of S***).
 
 ## Team
 
-  - __Product Owner__: Mark Steadman 
+  - __Product Owner__: Mark Steadman
   - __Scrum Master__: Bruce Liu
-  - __Development Team Members__: Jose Cuchilla, Jongsoo Yoon
+  - __Development Team Members__: Jose Cuchilla, Jongsoo Yoon, Joshua Pace, and Justin Biele
+
 
 ## Usage
 1. Make sure that Nodejs is installed.
@@ -43,6 +44,13 @@ corruption, and so on are the triggers that turn a POI into a POS (Piece of S***
 ## Contributing
 
 See **_CONTRIBUTING.md** for contribution guidelines.
+
+## Completed Additions
+1. POI general ratings saved
+2. Personal Experiences Submissions
+3. Facebook photo content displayed
+4. Average/Individual ratings graphed over time
+
 
 ## Pending Features
 1. Implement *put requests* to POI general ratings.
